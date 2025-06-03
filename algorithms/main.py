@@ -944,13 +944,16 @@ def performance_comparison():
                         end_time = time.time()
                         times.append(f"{(end_time - start_time) * 1000:.1f}")
                     
-                    time_str = ' '.join(f'{t:<8}' for t in times)
+                    time_str = ' '.join(f'{t}'.ljust(8) for t in times)
                     print(f"{name:<15} {time_str}")
                     
             elif choice == 2:
                 sizes = [1000, 5000, 10000]
                 print(f"\nSearching Performance (μs, searching for middle element):")
-                print(f"{'Algorithm':<20} {' '.join(f'{size}el':<10 for size in sizes)}")
+                header = f"{'Algorithm':<20} "
+                for size in sizes:
+                    header += f"{size}el".ljust(10)
+                print(header)
                 print("-" * 60)
                 
                 algorithms = [
@@ -971,7 +974,7 @@ def performance_comparison():
                         
                         times.append(f"{(end_time - start_time) * 1000000:.1f}")
                     
-                    time_str = ' '.join(f'{t:<10}' for t in times)
+                    time_str = ' '.join(f'{t}'.ljust(10) for t in times)
                     print(f"{name:<20} {time_str}")
                     
             elif choice == 3:
